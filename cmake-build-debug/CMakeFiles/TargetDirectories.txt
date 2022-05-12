@@ -1,0 +1,3 @@
+/home/danielfm/CLionProjects/customCFR/cmake-build-debug/CMakeFiles/customCFR.dir
+/home/danielfm/CLionProjects/customCFR/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/danielfm/CLionProjects/customCFR/cmake-build-debug/CMakeFiles/rebuild_cache.dir
