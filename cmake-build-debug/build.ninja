@@ -55,8 +55,8 @@ build CMakeFiles/customCFR.dir/main.cpp.o: CXX_COMPILER__customCFR_Debug /home/d
   OBJECT_DIR = CMakeFiles/customCFR.dir
   OBJECT_FILE_DIR = CMakeFiles/customCFR.dir
 
-build CMakeFiles/customCFR.dir/BaseFiles/BaseGame.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/BaseFiles/BaseGame.cpp || cmake_object_order_depends_target_customCFR
-  DEP_FILE = CMakeFiles/customCFR.dir/BaseFiles/BaseGame.cpp.o.d
+build CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/BaseFiles/UniversalGame.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/customCFR.dir
   OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/BaseFiles
@@ -73,8 +73,20 @@ build CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o: CXX_COMPILER__customCFR
   OBJECT_DIR = CMakeFiles/customCFR.dir
   OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/BaseFiles
 
-build CMakeFiles/customCFR.dir/Games/TicTacToe.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/Games/TicTacToe.cpp || cmake_object_order_depends_target_customCFR
-  DEP_FILE = CMakeFiles/customCFR.dir/Games/TicTacToe.cpp.o.d
+build CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/BaseFiles/BaseData.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/customCFR.dir
+  OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/BaseFiles
+
+build CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/Games/TicTacToeData.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/customCFR.dir
+  OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/Games
+
+build CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/Games/TicTacToeState.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/customCFR.dir
   OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/Games
@@ -87,7 +99,7 @@ build CMakeFiles/customCFR.dir/Games/TicTacToe.cpp.o: CXX_COMPILER__customCFR_De
 #############################################
 # Link the executable customCFR
 
-build customCFR: CXX_EXECUTABLE_LINKER__customCFR_Debug CMakeFiles/customCFR.dir/main.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseGame.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToe.cpp.o
+build customCFR: CXX_EXECUTABLE_LINKER__customCFR_Debug CMakeFiles/customCFR.dir/main.cpp.o CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/customCFR.dir
   POST_BUILD = :

@@ -2,13 +2,14 @@
 // Created by danielfm on 5/10/22.
 //
 
-#ifndef CUSTOMCFR_BASEGAME_H
-#define CUSTOMCFR_BASEGAME_H
+#ifndef CUSTOMCFR_UNIVERSALGAME_H
+#define CUSTOMCFR_UNIVERSALGAME_H
 
 #include <map>
 #include <vector>
 #include "BaseState.h"
 #include "BaseAlgo.h"
+#include "BaseData.h"
 
 /*
  * start
@@ -33,25 +34,20 @@
  *
  */
 
-class BaseGame {
+class UniversalGame {
 public:
-    int numPlayers;
-    bool isConstructed;
     //<action, (min, max)> for all actions. If max==0, then it's not a variable action
     //all data as well?
     //<dataType, dataValue> for all player stuff
-    BaseGame();
+    UniversalGame(BaseData gameData);
+
     void train(BaseAlgo algo);
     //playerStrategies - different chars, e.g. 'r' would be pick randomly, 'p' is go with probabilities, etc.
     //manualControl - if you want to play the bot. Player defaults to player 1 (?)
-    BaseState play(const vector<char>& playerStrategies, bool manualControl, bool visualize);
+    BaseState* play(BaseState* gameState, bool manualControl1, bool manualControl2, bool visualize);
+
+    BaseData gameData;
 private:
-    unordered_map<string, pair<float, float>> allPlayerActions;
-    unordered_map<string, pair<float, float>> allChanceActions;
-    unordered_map<string, pair<float, float>> allPrivatePlayerData;
-    unordered_map<string, pair<float, float>> allPublicPlayerData;
-    //string is representation of infoset, map is the probabilities for each action of that infoset
-    vector<unordered_map<string, map<string, float>>> playerProbabilities;
 
     float randomFloat(float min, float max);
 
@@ -59,8 +55,7 @@ private:
 
     void visualizeAction(int player, const string& basicString, float value, const vector<pair<string, float>>& vector1);
 
-    virtual void visualizeState(BaseState state) = 0;
 };
 
 
-#endif //CUSTOMCFR_BASEGAME_H
+#endif //CUSTOMCFR_UNIVERSALGAME_H
