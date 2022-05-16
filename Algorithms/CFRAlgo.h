@@ -10,8 +10,14 @@
 class CFRAlgo : BaseAlgo{
 public:
     CFRAlgo(BaseData gameData, BaseState* gameState);
-    double doAlgo(vector<double> playerProbOfCurrState) override;
-    vector<BaseNode> train(int numIterations) override;
+
+    BaseNode * get_node(BaseState *const gameState);
+
+    double doAlgo(vector<double> playerProbOfCurrState, BaseState *currGameState);
+
+    ~CFRAlgo() override;
+
+    vector<struct BaseNode *> train(int numIterations, BaseState *rootState);
 };
 
 

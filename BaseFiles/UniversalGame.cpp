@@ -199,9 +199,9 @@ BaseState *UniversalGame::takeAutomaticAction(BaseState *gameState, bool visuali
         case 'p':
             std::cout << "probability" << std::endl;
             //iterate through vector of nodes. If .isThisInfoSet(gameState) is true, then use that strats
-            for (const BaseNode& infoSet: allInfoSets) {
-                pair<bool, vector< pair< std::string, float> >> infoResult = infoSet.isThisInfoSet(gameState);
-                if (infoResult.first) {
+            for (const auto infoSet: allInfoSets) {
+                bool infoResult = infoSet->isThisInfoSet(gameState);
+                if (infoResult) {
                     //The current game state matches this info set, so now we just take the action
                     //Pick a random float from 0 to 1, then keep adding the probabilities until we pass it, then
                     //return last action given.
@@ -209,14 +209,21 @@ BaseState *UniversalGame::takeAutomaticAction(BaseState *gameState, bool visuali
                     float randFloat = randomFloat(0,1);
                     float totalProbabilities = 0;
                     int actionCounter = 0;
+                    //convert the map to vector
+                    std::vector<std::pair<string, double>> actionVector;
+                    auto myMap = infoSet->get_average_strategy();
+                    for (const auto & it : myMap) {
+                        actionVector.emplace_back(it);
+                    }
+                    //find the thing to make
                     while (totalProbabilities < randFloat) {
-                        totalProbabilities += infoResult.second.at(actionCounter).second;
+                        totalProbabilities += actionVector.at(actionCounter).second;
                         actionCounter++;
                     }
-                    gameState = gameState->takeAction(infoResult.second.at(actionCounter-1).first, 0);
+                    gameState = gameState->takeAction(actionVector.at(actionCounter-1).first, 0);
                     //visualize the chance action
                     if (visualize) {
-                        visualizeAction(gameState->getCurrPlayer(), infoResult.second.at(actionCounter-1).first, 0, gameState->history);
+                        visualizeAction(gameState->getCurrPlayer(), actionVector.at(actionCounter-1).first, 0, gameState->history);
                         gameState->visualizeState();
                     }
 

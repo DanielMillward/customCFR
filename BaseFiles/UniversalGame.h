@@ -61,7 +61,7 @@ private:
 
     BaseState* takeAutomaticAction(BaseState* gameState, bool visualize);
 
-    vector<BaseNode> allInfoSets{};
+    vector<BaseNode*> allInfoSets{};
 
 
     void train(BaseState *rootState, BaseAlgo &algo, int numIterations);

@@ -4,54 +4,88 @@
 
 #include "CFRAlgo.h"
 
+#include <utility>
+#include "CFRNode.h"
+#include "../Games/TicTacToeData.h"
+#include "../Games/TicTacToeState.h"
+
 CFRAlgo::CFRAlgo(BaseData gameData, BaseState *gameState) {
-    this->gameData = gameData;
+    this->gameData = std::move(gameData);
     this->currGameState = gameState;
 }
 
-double CFRAlgo::doAlgo(vector<double> playerProbOfCurrState) {
+double CFRAlgo::doAlgo(vector<double> playerProbOfCurrState, BaseState* currGameState) {
     int player = currGameState->getCurrPlayer();
 
     // return payoff for terminal states (for current player)
     if (currGameState->isTerminal()) {
         return currGameState->getPayoffs().at(player-1);
     }
-
-    InformationSet info_set = { .hand = cards[player], .community_card = cards[2], .history = history };
-    auto node = get_node(info_set);
+    //get the node corresponding to this info state
+    auto node = get_node(currGameState);
 
     // for each action, recursively call cfr with additional history and probability
-    std::array<double, NUM_ACTIONS> strategy = node->second.get_strategy(player == 0 ? p0 : p1);
-    std::array<double, NUM_ACTIONS> utilities{};
-    double node_utility = 0;
-    for (uint8_t action = 0; action < NUM_ACTIONS; action++) {
-        // add the new action to the history
-        History next_history = History(history);
-        next_history.push_back(static_cast<Action>(action));
-        // recursively call cfr from the perspective of the other player
-        utilities[action] = player == 0
-                            ? - cfr(cards, next_history, p0 * strategy[action], p1)
-                            : - cfr(cards, next_history, p0, p1 * strategy[action]);
-        node_utility += strategy[action] * utilities[action];
+    std::unordered_map<string, double> playerStrat = node->get_strategy(
+            player == 1 ? playerProbOfCurrState.at(0) : playerProbOfCurrState.at(1));
+    std::unordered_map<string, double> utilities{};
+    double currNodeUtility = 0;
+    for (string action : node->actions) {
+        //take the iterated action
+        BaseState* newState = currGameState->takeAction(action, 0);
+        //find the utility of taking that action
+        if (player == 1) {
+            playerProbOfCurrState[0] *= playerStrat[action];
+            utilities[action] = - doAlgo(playerProbOfCurrState, newState);
+        } else {
+            playerProbOfCurrState[1] *= playerStrat[action];
+            utilities[action] = - doAlgo(playerProbOfCurrState, newState);
+        }
+        node->node_utility += playerStrat[action] * utilities[action];
     }
 
-    // for each action, compute and accumulate counterfactual regret
-    for (int action = 0; action < NUM_ACTIONS; action++) {
-        double regret = utilities[action] - node_utility;
-        node->second.regret_sum[action] += (player == 0 ? p1 : p0) * regret;
+    for (string action : node->actions) {
+        // for each action, compute and accumulate counterfactual regret
+        double regret = utilities[action] - node->node_utility;
+        node->regret_sum[action] += (player == 0 ? playerProbOfCurrState.at(1) : playerProbOfCurrState.at(0)) * regret;
     }
 
-    return node_utility;
+
+    return node->node_utility;
 }
 
-std::map<InformationSet, Node>::iterator Trainer::get_node(const InformationSet &info_set) {
-    // TODO make this a bit nicer, maybe use a better return type
-    auto iter = node_map.find(info_set);
-    if (iter == node_map.end()) {
-        // node not found => create and insert it
-        node_map[info_set] = Node();
-        return node_map.find(info_set);
-    } else {
-        return iter;
+BaseNode* CFRAlgo::get_node(BaseState *const gameState) {
+    //Finds the node in the algo node_set.
+    for (int i = 0; i < nodeList.size(); ++i) {
+        bool isMatching =nodeList.at(i)->isThisInfoSet(gameState);
+        if (isMatching) {
+    //found our node, return it
+            BaseNode* output = nodeList.at(i);
+            return output;
+        }
     }
+    //Went through all nodes, didn't find it. Make a new one!
+    vector<string> actionList{};
+    for (auto pair : gameState->getLegalActions()) {
+        actionList.push_back(pair.first);
+    }
+    CFRNode* currNode = new CFRNode(gameState, gameState->getLegalActions().size(), actionList);
+    return currNode;
 }
+
+CFRAlgo::~CFRAlgo() {
+
+}
+
+vector<BaseNode*> CFRAlgo::train(int numIterations, BaseState* rootState){
+    double utility = 0;
+    vector<double> playerProbOfState{};
+    playerProbOfState.push_back(1);
+    playerProbOfState.push_back(1);
+    for (int i = 0; i < numIterations; i++) {
+        utility += doAlgo(playerProbOfState, rootState);
+    }
+
+    // construct a map with the average strategy over the training process
+    return nodeList;
+}
+

@@ -46,7 +46,7 @@ std::unordered_map<string, double> CFRNode::get_strategy(double realization_weig
     return strategy;
 }
 
-std::pair<bool, vector<pair<std::string, float> > > CFRNode::isThisInfoSet(BaseState *gameState) const {
+bool CFRNode::isThisInfoSet(BaseState *gameState) const {
     //check if sequence of player moves are the same in history (e.g. chance, p1, p2, p1, p2)
     //check if the value for this player's actions are the same
     //check if visible chance actions are the same
@@ -55,11 +55,22 @@ std::pair<bool, vector<pair<std::string, float> > > CFRNode::isThisInfoSet(BaseS
 
     //basically, check if histories are the same except for hidden other player actions/chance actions
 
-    //if so, return <true, <pairs of probabilities>>
-    return std::pair<bool, vector<pair<std::string, float>>>();
+    //right now, just check if exact histories are the same
+    if (gameState->history.size() == currState->history.size()) {
+        for (int i = 0; i < gameState->history.size(); ++i) {
+            if (!(gameState->history.at(i).first == currState->history.at(i).first)) {
+                return false;
+            } else if (gameState->history.at(i).second != currState->history.at(i).second) {
+                return false;
+            }
+        }
+    } else {
+        return false;
+    }
+    return true;
 }
 
-CFRNode::CFRNode(int numActions, vector<string> actions) {
+CFRNode::CFRNode(BaseState *gameState, int numActions, vector<string> actions) {
     this->numActions = numActions;
     for (int i = 0; i < numActions; ++i) {
         strategy[actions.at(i)] = 0;
@@ -67,5 +78,6 @@ CFRNode::CFRNode(int numActions, vector<string> actions) {
         regret_sum[actions.at(i)] = 0;
     }
     this->actions = actions;
+    this->currState = gameState;
 }
 

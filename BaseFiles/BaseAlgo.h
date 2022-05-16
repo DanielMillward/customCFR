@@ -13,11 +13,13 @@ class BaseAlgo {
 public:
     //BaseAlgo(BaseData gameData, BaseState* gameState);
     virtual double doAlgo(vector<double> playerProbOfCurrState) = 0;
-    virtual vector<BaseNode> train(int numIterations) = 0;
-
+    virtual vector<BaseNode*> train(int numIterations) = 0;
+    virtual ~BaseAlgo()
+    = default;
 protected:
     BaseData gameData;
     BaseState* currGameState;
+    vector<BaseNode*> nodeList;
 };
 
 

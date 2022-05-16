@@ -12,13 +12,13 @@
 using namespace std;
 class TicTacToeState : public BaseState {
 
-    TicTacToeState * takeAction(string action, float value);
-    std::vector<int> getPayoffs();
-    vector<pair<std::string, float>> getInfoSet(int player);
-    bool isTerminal();
+    TicTacToeState * takeAction(string action, float value) override;
+    std::vector<int> getPayoffs() override;
+    vector<pair<std::string, float>> getInfoSet(int player) override;
+    bool isTerminal() override;
     int getCurrPlayer() override;
-    vector<pair<std::string, pair<float, float>>> getLegalActions();
-    void visualizeState();
+    vector<pair<std::string, pair<float, float>>> getLegalActions() override;
+    void visualizeState() override;
 
 public:
     TicTacToeState(vector<pair<string, float>> history, vector<multimap<string, float>> privatePlayersData,
