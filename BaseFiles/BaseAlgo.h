@@ -6,8 +6,18 @@
 #define CUSTOMCFR_BASEALGO_H
 
 
-class BaseAlgo {
+#include "BaseState.h"
+#include "BaseNode.h"
 
+class BaseAlgo {
+public:
+    //BaseAlgo(BaseData gameData, BaseState* gameState);
+    virtual double doAlgo(vector<double> playerProbOfCurrState) = 0;
+    virtual vector<BaseNode> train(int numIterations) = 0;
+
+protected:
+    BaseData gameData;
+    BaseState* currGameState;
 };
 
 

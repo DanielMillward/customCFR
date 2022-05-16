@@ -1,11 +1,12 @@
 # ninja log v5
-0	1060	1652485113417643709	CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o	305bb375aae43ea8
-0	828	1652478756149496371	CMakeFiles/customCFR.dir/main.cpp.o	6d33afc78339f987
-1060	1258	1652485113613644158	customCFR	74f864864aa7e9f5
-1	411	1652478755733495587	CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o	9950b4cd5a2ff414
+0	942	1652731702544259428	CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o	305bb375aae43ea8
+0	800	1652731702404259059	CMakeFiles/customCFR.dir/main.cpp.o	6d33afc78339f987
+942	1054	1652731702656259723	customCFR	14459dc4ac78487d
+1	689	1652731478243659577	CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o	9950b4cd5a2ff414
+1	422	1652731552607860416	CMakeFiles/customCFR.dir/BaseFiles/BaseNode.cpp.o	1b353f88b938b080
 1	435	1652478268219973792	CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o	9cfc3c63c96d10bc
-0	954	1652485036793469570	CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o	76262dc585654f11
+1	1696	1652731479251662314	CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o	76262dc585654f11
 0	316	1652371050557034332	CMakeFiles/customCFR.dir/Games/TicTacToe.cpp.o	6eaf0c5bed2ace0f
 1	351	1652478176946994413	CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o	13fa6fa9bc065fc
-0	25	1652371050269033966	CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o	ac1f333681eec492
+1	309	1652731590827962867	CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o	ac1f333681eec492
 0	731	1652371050973034861	CMakeFiles/customCFR.dir/BaseFiles/BaseGame.cpp.o	b98fc353f3420ea1

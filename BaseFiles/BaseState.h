@@ -19,9 +19,10 @@ class BaseState {
     //need list of strings, with bool values for whether they have values next to them? or min/max.
     //if max is 0, assumed to be a non-float action.
 public:
+    //NOTE: The constructor needs to be able to set up a new game if its root!
 
-    vector<pair<string, float>> history; // sequential list of what happened
-
+    // sequential list of what happened
+    vector<pair<string, float>> history;
     // Every player data, indexed by the vector.
     //each being a map of <dataType, value>
      vector<multimap<string, float>> privatePlayersData;
@@ -33,9 +34,7 @@ public:
     //IMPLEMENT THESE!!!
     //BaseState(int numPlayers, vector<pair<string, string>> boardData, vector<multimap<string, float>> publicPlayersData, vector<multimap<string, float>> privatePlayersData, vector<pair<string, float>> history, bool isRoot, vector<pair<string, pair<float, float>>> allActions, multimap<string, pair<float, float>> allPrivatePlayerData, multimap<string, pair<float, float>> allPublicPlayerData);
     virtual BaseState* takeAction(string action, float value);
-
     virtual std::vector<int> getPayoffs();
-
     virtual vector<pair<std::string, float>> getInfoSet(int player) = 0;
     virtual bool isTerminal();
     virtual int getCurrPlayer() = 0;

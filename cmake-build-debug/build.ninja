@@ -91,6 +91,24 @@ build CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o: CXX_COMPILER__customC
   OBJECT_DIR = CMakeFiles/customCFR.dir
   OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/Games
 
+build CMakeFiles/customCFR.dir/BaseFiles/BaseNode.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/BaseFiles/BaseNode.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/BaseFiles/BaseNode.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/customCFR.dir
+  OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/BaseFiles
+
+build CMakeFiles/customCFR.dir/Algorithms/CFRNode.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/Algorithms/CFRNode.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/Algorithms/CFRNode.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/customCFR.dir
+  OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/Algorithms
+
+build CMakeFiles/customCFR.dir/Algorithms/CFRAlgo.cpp.o: CXX_COMPILER__customCFR_Debug /home/danielfm/CLionProjects/customCFR/Algorithms/CFRAlgo.cpp || cmake_object_order_depends_target_customCFR
+  DEP_FILE = CMakeFiles/customCFR.dir/Algorithms/CFRAlgo.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/customCFR.dir
+  OBJECT_FILE_DIR = CMakeFiles/customCFR.dir/Algorithms
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target customCFR
@@ -99,7 +117,7 @@ build CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o: CXX_COMPILER__customC
 #############################################
 # Link the executable customCFR
 
-build customCFR: CXX_EXECUTABLE_LINKER__customCFR_Debug CMakeFiles/customCFR.dir/main.cpp.o CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o
+build customCFR: CXX_EXECUTABLE_LINKER__customCFR_Debug CMakeFiles/customCFR.dir/main.cpp.o CMakeFiles/customCFR.dir/BaseFiles/UniversalGame.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseState.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseAlgo.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeData.cpp.o CMakeFiles/customCFR.dir/Games/TicTacToeState.cpp.o CMakeFiles/customCFR.dir/BaseFiles/BaseNode.cpp.o CMakeFiles/customCFR.dir/Algorithms/CFRNode.cpp.o CMakeFiles/customCFR.dir/Algorithms/CFRAlgo.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/customCFR.dir
   POST_BUILD = :
