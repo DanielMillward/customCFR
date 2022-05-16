@@ -47,6 +47,15 @@ std::unordered_map<string, double> CFRNode::get_strategy(double realization_weig
 }
 
 std::pair<bool, vector<pair<std::string, float> > > CFRNode::isThisInfoSet(BaseState *gameState) const {
+    //check if sequence of player moves are the same in history (e.g. chance, p1, p2, p1, p2)
+    //check if the value for this player's actions are the same
+    //check if visible chance actions are the same
+    //check if visible other player actions are the same
+    //check if current player data is the same
+
+    //basically, check if histories are the same except for hidden other player actions/chance actions
+
+    //if so, return <true, <pairs of probabilities>>
     return std::pair<bool, vector<pair<std::string, float>>>();
 }
 
