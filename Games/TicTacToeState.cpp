@@ -20,13 +20,13 @@ TicTacToeState::TicTacToeState(vector<pair<string, float>> history, vector<multi
     this->history = history;
 }
 
-TicTacToeState * TicTacToeState::takeAction(string action, float value) {
+BaseState TicTacToeState::takeAction(string action, float value) {
     //update history
     history.push_back(make_pair(action, value));
     //update board data
     boardData.push_back(make_pair(action, std::to_string(value)));
     currPlayer = (currPlayer + 1) % 2 + 1;
-    return this;
+    return *this;
 }
 
 std::vector<int> TicTacToeState::getPayoffs() {

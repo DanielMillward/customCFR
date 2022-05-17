@@ -7,17 +7,18 @@
 
 #include "../BaseFiles/BaseAlgo.h"
 
-class CFRAlgo : BaseAlgo{
+class CFRAlgo : public BaseAlgo{
 public:
-    CFRAlgo(BaseData gameData, BaseState* gameState);
 
-    BaseNode * get_node(BaseState *const gameState);
-
-    double doAlgo(vector<double> playerProbOfCurrState, BaseState *currGameState);
+    CFRAlgo(BaseData gameData, BaseState gameState);
 
     ~CFRAlgo() override;
 
-    vector<struct BaseNode *> train(int numIterations, BaseState *rootState);
+    vector<struct BaseNode> train(int numIterations, BaseState rootState) override;
+
+    double doAlgo(vector<double> playerProbOfCurrState, BaseState currGameState);
+
+    BaseNode get_node(BaseState gameState);
 };
 
 

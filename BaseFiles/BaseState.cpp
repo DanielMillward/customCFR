@@ -24,7 +24,11 @@ void BaseState::visualizeState() {
 
 }
 
-BaseState *BaseState::takeAction(string action, float value) {
-    return nullptr;
+vector<pair<std::string, float>> BaseState::getInfoSet(int player) {
+    return vector<pair<std::string, float>>();
+}
+
+BaseState BaseState::takeAction(string action, float value) {
+    return BaseState();
 }
 

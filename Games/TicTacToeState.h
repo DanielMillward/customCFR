@@ -12,7 +12,7 @@
 using namespace std;
 class TicTacToeState : public BaseState {
 
-    TicTacToeState * takeAction(string action, float value) override;
+    BaseState takeAction(string action, float value) override;
     std::vector<int> getPayoffs() override;
     vector<pair<std::string, float>> getInfoSet(int player) override;
     bool isTerminal() override;

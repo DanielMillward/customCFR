@@ -44,9 +44,12 @@ public:
     void train(BaseAlgo& algo);
     //playerStrategies - different chars, e.g. 'r' would be pick randomly, 'p' is go with probabilities, etc.
     //manualControl - if you want to play the bot. Player defaults to player 1 (?)
-    BaseState* play(BaseState* gameState, bool manualControl, int manualPlayerNumber, bool visualize);
+    BaseState play(BaseState gameState, bool manualControl, int manualPlayerNumber, bool visualize);
 
     BaseData gameData;
+
+    void train(BaseState rootState, BaseAlgo &algo, int numIterations);
+
 private:
 
     float randomFloat(float min, float max);
@@ -55,16 +58,18 @@ private:
 
     void visualizeAction(int player, const string& basicString, float value, const vector<pair<string, float>>& vector1);
 
-    BaseState* takeRandomAction(BaseState* gameState, bool visualize);
+    BaseState takeRandomAction(BaseState* gameState, bool visualize);
 
-    BaseState* takeManualAction(BaseState* gameState, bool visualize);
+    BaseState takeManualAction(BaseState* gameState, bool visualize);
 
-    BaseState* takeAutomaticAction(BaseState* gameState, bool visualize);
+    BaseState takeAutomaticAction(BaseState gameState, bool visualize);
 
-    vector<BaseNode*> allInfoSets{};
+    vector<BaseNode> allInfoSets{};
 
 
-    void train(BaseState *rootState, BaseAlgo &algo, int numIterations);
+    BaseState takeRandomAction(BaseState gameState, bool visualize);
+
+    BaseState takeManualAction(BaseState gameState, bool visualize);
 };
 
 

@@ -11,10 +11,10 @@
 
 class CFRNode : public BaseNode{
 public:
-    CFRNode(BaseState *gameState, int numActions, vector<string> actions);
-    std::unordered_map<string, double> get_average_strategy() const override;
+    CFRNode(BaseState gameState, int numActions, vector<string> actions);
+    std::unordered_map<string, double> get_average_strategy() override;
     std::unordered_map<string, double> get_strategy(double realization_weight) override;
-    bool isThisInfoSet(BaseState* gameState) const override;
+    bool isThisInfoSet(BaseState gameState) override;
 };
 
 

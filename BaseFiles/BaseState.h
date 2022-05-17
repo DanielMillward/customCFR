@@ -33,11 +33,11 @@ public:
 
     //IMPLEMENT THESE!!!
     //BaseState(int numPlayers, vector<pair<string, string>> boardData, vector<multimap<string, float>> publicPlayersData, vector<multimap<string, float>> privatePlayersData, vector<pair<string, float>> history, bool isRoot, vector<pair<string, pair<float, float>>> allActions, multimap<string, pair<float, float>> allPrivatePlayerData, multimap<string, pair<float, float>> allPublicPlayerData);
-    virtual BaseState* takeAction(string action, float value);
+    virtual BaseState takeAction(string action, float value);
     virtual std::vector<int> getPayoffs();
-    virtual vector<pair<std::string, float>> getInfoSet(int player) = 0;
+    virtual vector<pair<std::string, float>> getInfoSet(int player);
     virtual bool isTerminal();
-    virtual int getCurrPlayer() = 0;
+    virtual int getCurrPlayer();
     virtual vector<pair<string, pair<float, float>>> getLegalActions();
     virtual void visualizeState();
     // END IMPLEMENT
